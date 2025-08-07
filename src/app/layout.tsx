@@ -2,6 +2,7 @@
 
 import type { Metadata, Viewport } from 'next';
 import { Inter } from 'next/font/google';
+import Script from 'next/script'; // <--- 已加入這行
 
 import './globals.css';
 import 'sweetalert2/dist/sweetalert2.min.css';
@@ -116,8 +117,24 @@ export default async function RootLayout({
           <SiteProvider siteName={siteName} announcement={announcement}>
             {children}
             <GlobalErrorIndicator />
-          </SiteProvider>
+          </Site.Provider>
         </ThemeProvider>
+
+        {/* Tawk.to Script 已加入這裡 */}
+        <Script id="tawk-to-script" strategy="afterInteractive">
+          {`
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+            (function(){
+            var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+            s1.async=true;
+            s1.src='https://embed.tawk.to/689479a46ec67e192b9221a2/1j21vmbgl';
+            s1.charset='UTF-8';
+            s1.setAttribute('crossorigin','*');
+            s0.parentNode.insertBefore(s1,s0);
+            })();
+          `}
+        </Script>
+        
       </body>
     </html>
   );
