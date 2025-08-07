@@ -1,3 +1,5 @@
+// src/app/layout.tsx
+
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import type { Metadata, Viewport } from 'next';
@@ -117,11 +119,11 @@ export default async function RootLayout({
           <SiteProvider siteName={siteName} announcement={announcement}>
             {children}
             <GlobalErrorIndicator />
-          </Site.Provider>
+          </SiteProvider>
         </ThemeProvider>
 
         {/* Tawk.to Script 已加入這裡 */}
-        <Script id="tawk-to-script" strategy="afterInteractive">
+        <Script id='tawk-to-script' strategy='afterInteractive'>
           {`
             var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
             (function(){
@@ -134,7 +136,6 @@ export default async function RootLayout({
             })();
           `}
         </Script>
-        
       </body>
     </html>
   );
